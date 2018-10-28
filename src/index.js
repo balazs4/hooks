@@ -6,10 +6,9 @@ const useFetch = url => {
   useEffect(
     () => {
       if (data === null)
-        new Promise(resolve => setTimeout(resolve, Math.random() * 1000 * 2))
-          .then(() => fetch(url))
+        fetch(url)
           .then(x => x.json())
-          .then(x => setData(x[Object.keys(x)[0]]));
+          .then(x => setData(x));
     },
     [data]
   );
@@ -21,7 +20,7 @@ const useKrautipsum = () => {
   const verb = useFetch(`https://krautipsum.de/api/verb`);
   const noun = useFetch(`https://krautipsum.de/api/noun`);
   const adjective = useFetch(`https://krautipsum.de/api/adjective`);
-  return { greeting, adjective, noun, verb };
+  return { ...greeting, ...adjective, ...noun, ...verb };
 };
 
 const App = props => {
