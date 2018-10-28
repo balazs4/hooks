@@ -21,7 +21,7 @@ const useKrautipsum = (...resources) =>
   resources.reduce(
     (acc, res) => ({
       ...acc,
-      [res]: useFetch(`http://krautipsum.de/api/${res}`)
+      [res]: useFetch(`https://krautipsum.de/api/${res}`)
     }),
     {}
   );
